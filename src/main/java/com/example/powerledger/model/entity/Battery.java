@@ -6,7 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Battery {
 
 	@Id
@@ -17,9 +26,9 @@ public class Battery {
 	private String name;
 	
 	@Column
-	private Integer postcode;
+	private int postcode;
 	
 	@Column
-	private Integer watt_capacity;
+	private int wattCapacity;
 	
 }
