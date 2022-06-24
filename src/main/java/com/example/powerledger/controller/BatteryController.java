@@ -29,8 +29,8 @@ public class BatteryController {
 	}
 	
 	@GetMapping(value = "/getStatistics")
-	public ResponseEntity<BatteryStatisticsDTO> getBatteryStatistics(@RequestParam int from, @RequestParam int to) {
-		return ResponseEntity.ok(batteryService.getBatteryStatistics(from, to));
+	public BatteryStatisticsDTO getBatteryStatistics(@RequestParam int from, @RequestParam int to) {
+		return batteryService.getBatteryStatistics(from, to);
 	}
 	
 }
