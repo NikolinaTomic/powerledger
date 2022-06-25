@@ -24,8 +24,7 @@ public class BatteryController {
 	
 	@PostMapping(value = "/save")
 	public ResponseEntity<String> saveBatteries(@RequestBody List<BatteryDTO> batteries) {
-		batteryService.saveBatteries(batteries);
-		return ResponseEntity.ok(String.format("%d new batteries saved.", batteries.size()));
+		return ResponseEntity.ok(String.format("%d new batteries saved.", batteryService.saveBatteries(batteries)));
 	}
 	
 	@GetMapping(value = "/getStatistics")
