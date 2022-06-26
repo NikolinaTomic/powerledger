@@ -21,15 +21,16 @@ public class BatteryController {
 
 	@Autowired
 	private BatteryService batteryService;
-	
+
 	@PostMapping(value = "/save")
-	public ResponseEntity<String> saveBatteries(@RequestBody List<BatteryDTO> batteries) {
-		return ResponseEntity.ok(String.format("%d new batteries saved.", batteryService.saveBatteries(batteries)));
+	public ResponseEntity<String> saveBatteryList(@RequestBody List<BatteryDTO> batteries) {
+		return ResponseEntity
+				.ok(String.format("%d new batteries saved.", batteryService.saveBatteryList(batteries).size()));
 	}
-	
+
 	@GetMapping(value = "/getStatistics")
 	public BatteryStatisticsDTO getBatteryStatistics(@RequestParam int from, @RequestParam int to) {
 		return batteryService.getBatteryStatistics(from, to);
 	}
-	
+
 }

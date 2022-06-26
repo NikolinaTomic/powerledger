@@ -19,16 +19,16 @@ import lombok.NoArgsConstructor;
 public class Battery {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	@Column
 	private String name;
-	
+
 	@Column
 	private int postcode;
-	
+
 	@Column
 	private int wattCapacity;
-	
+
 }

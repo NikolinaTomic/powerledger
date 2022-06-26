@@ -13,6 +13,6 @@ import com.example.powerledger.model.entity.Battery;
 public interface BatteryRepository extends JpaRepository<Battery, Integer> {
 
 	@Query(value = "SELECT b FROM Battery b WHERE b.postcode BETWEEN :from and :to")
-    List<Battery> findByPostCodeRange(@Param("from") int from, @Param("to") int to);
+	List<Battery> findByPostCodeRange(@Param("from") int from, @Param("to") int to);
 
 }

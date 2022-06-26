@@ -10,15 +10,15 @@ import com.example.powerledger.repository.BatteryRepository;
 
 @SpringBootTest
 public class BatteryRepositoryTest {
-	
+
 	@Autowired
 	BatteryRepository batteryRepository;
-	
+
 	@Test
 	void saveAllTest() {
 		assertEquals(BaseTest.listSize, batteryRepository.saveAll(BaseTest.createBatteryList()).size());
 	}
-	
+
 	@Test
 	void findByPostCodeRangeTest() {
 		batteryRepository.saveAll(BaseTest.createBatteryList());
