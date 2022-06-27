@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.example.powerledger.repository.BatteryRepository;
 
 @SpringBootTest
-public class BatteryRepositoryTest {
+class BatteryRepositoryTest {
 
 	@Autowired
 	BatteryRepository batteryRepository;

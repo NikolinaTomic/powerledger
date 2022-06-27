@@ -27,7 +27,7 @@ import com.example.powerledger.repository.BatteryRepository;
 import com.example.powerledger.service.BatteryService;
 
 @SpringBootTest
-public class BatteryServiceTest {
+class BatteryServiceTest {
 
 	@Mock
 	BatteryRepository batteryRepository;

@@ -26,9 +26,8 @@ public class BatteryService {
 	private BatteryConverter batteryConverter;
 
 	public List<BatteryDTO> saveBatteryList(List<BatteryDTO> batteriesDTO) {
-		List<Battery> batteryList = batteryRepository
-				.saveAll(batteriesDTO.stream().map(batteryDTO -> checkIfNameNull(batteryDTO))
-						.map(batteryDTO -> batteryConverter.convertToEntity(batteryDTO)).collect(Collectors.toList()));
+		List<Battery> batteryList = batteryRepository.saveAll(batteriesDTO.stream().map(this::checkIfNameNull)
+				.map(batteryDTO -> batteryConverter.convertToEntity(batteryDTO)).collect(Collectors.toList()));
 		return batteryList.stream().map(battery -> batteryConverter.convertToDTO(battery)).collect(Collectors.toList());
 	}
 
@@ -37,19 +36,19 @@ public class BatteryService {
 
 		BatteryStatisticsDTO statistics = new BatteryStatisticsDTO();
 
-		if (batteryList.size() == 0) {
+		if (batteryList.isEmpty()) {
 			throw new NoSuchElementException(
 					String.format("There are no batteries with watt capacity from %d to %d", from, to));
 		}
 
 		statistics.setBatteryNames(batteryList.stream().sorted(Comparator.comparing(Battery::getName))
-				.map(battery -> battery.getName()).collect(Collectors.toList()));
+				.map(Battery::getName).collect(Collectors.toList()));
 
-		int totalWattCapacity = batteryList.stream().map(battery -> battery.getWattCapacity())
+		int totalWattCapacity = batteryList.stream().map(Battery::getWattCapacity)
 				.collect(Collectors.summingInt(Integer::intValue));
 
 		statistics.setTotalWattCapacity(totalWattCapacity);
-		statistics.setAverageWattCapacity(totalWattCapacity / batteryList.size());
+		statistics.setAverageWattCapacity((double) totalWattCapacity / batteryList.size());
 
 		return statistics;
 	}
